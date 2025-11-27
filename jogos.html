@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>DiversaMente - Jogos Educativos</title>
+
+<style>
+/* ======== ESTILO GERAL ======== */
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#e8f1ff;
+    position:relative;
+}
+
+/* puzzle marca-d’água repetido */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:url("https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Autism_Awareness_Puzzle_Piece.png/480px-Autism_Awareness_Puzzle_Piece.png");
+    background-size:180px;
+    background-repeat:repeat;
+    background-position:center;
+    opacity:0.08;
+    z-index:-1;
+}
+
+header{
+    background:#2b70c9;
+    color:white;
+    padding:20px;
+    text-align:center;
+    box-shadow:0 3px 8px rgba(0,0,0,0.25);
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.container{
+    max-width:950px;
+    margin:auto;
+    padding:20px;
+}
+
+/* ======== CARTÕES DE JOGOS ======== */
+.card{
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    margin-bottom:35px;
+    box-shadow:0 0 20px rgba(0,0,0,0.18);
+    border-left:10px solid #2b70c9;
+    animation:fade 0.4s ease;
+}
+
+@keyframes fade{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* puzzle decorativo nos cards */
+.card::after{
+    content:"🧩";
+    position:absolute;
+    font-size:50px;
+    opacity:0.1;
+    right:20px;
+    top:20px;
+}
+
+h2{
+    color:#2b70c9;
+}
+
+/* ======== BOTÕES ======== */
+button{
+    background:#2b70c9;
+    border:none;
+    color:white;
+    padding:12px 25px;
+    border-radius:12px;
+    font-size:18px;
+    cursor:pointer;
+    margin:5px;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#1b4f8b;
+    transform:scale(1.05);
+}
+
+/* ======== JOGO 1 (arrastar) ======== */
+.letras span{
+    display:inline-block;
+    background:#caddff;
+    padding:12px 20px;
+    margin:8px;
+    font-size:26px;
+    font-weight:bold;
+    border-radius:12px;
+    cursor:grab;
+    box-shadow:0 0 8px rgba(0,0,0,0.15);
+}
+
+.espaco-palavra{
+    margin-top:20px;
+    padding:25px;
+    border:3px dashed #2b70c9;
+    border-radius:15px;
+    min-height:60px;
+    background:#f7fbff;
+    font-size:24px;
+    text-align:center;
+}
+
+/* imagens jogo 4 */
+.fig{
+    width:170px;
+    border-radius:15px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+    transition:0.2s;
+}
+.fig:hover{
+    transform:scale(1.05);
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>DiversaMente</h1>
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="jogos.html">Jogos</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <!-- SOM DE ACERTO E ERRO -->
+    <audio id="somAcerto" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg"></audio>
+    <audio id="somErro" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg"></audio>
+
+    <!-- JOGO 1 -->
+    <div class="card">
+        <h2>🧩 Jogo 1 — Forme a palavra: GATO</h2>
+        <div class="letras">
+            <span draggable="true">O</span>
+            <span draggable="true">A</span>
+            <span draggable="true">G</span>
+            <span draggable="true">T</span>
+        </div>
+        <div id="dropzone" class="espaco-palavra">Arraste aqui</div>
+        <p id="msg1"></p>
+    </div>
+
+    <!-- JOGO 2 -->
+    <div class="card">
+        <h2>🧩 Jogo 2 — Complete a sílaba da palavra CASA</h2>
+        <button onclick="silaba('CA')">CA</button>
+        <button onclick="silaba('CO')">CO</button>
+        <button onclick="silaba('CU')">CU</button>
+        <p id="msg2"></p>
+    </div>
+
+    <!-- JOGO 3 -->
+    <div class="card">
+        <h2>🧩 Jogo 3 — Clique na vogal correta</h2>
+        <p>Qual vogal completa a palavra: C _ SA?</p>
+        <button onclick="vogal('A')">A</button>
+        <button onclick="vogal('E')">E</button>
+        <button onclick="vogal('I')">I</button>
+        <button onclick="vogal('O')">O</button>
+        <button onclick="vogal('U')">U</button>
+        <p id="msg3"></p>
+    </div>
+
+    <!-- JOGO 4 -->
+    <div class="card">
+        <h2>🧩 Jogo 4 — Qual dessas imagens é um gato?</h2>
+
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/320px-Cat03.jpg"
+             class="fig" onclick="figura('gato')">
+
+        <img src="./img/thumb-1920-323455.jpg" 
+             class="fig" onclick="figura('cachorro')">
+
+        <img src="./img/OIP (1).webp"
+             class="fig" onclick="figura('vaca')">
+
+        <p id="msg4"></p>
+    </div>
+
+    <!-- JOGO 5 -->
+    <div class="card">
+        <h2>🧩 Jogo 5 — Qual letra começa a palavra ABACAXI?</h2>
+        <button onclick="letrainicial('A')">A</button>
+        <button onclick="letrainicial('B')">B</button>
+        <button onclick="letrainicial('C')">C</button>
+        <p id="msg5"></p>
+    </div>
+
+</div>
+
+<script>
+/* SOM */
+const acerto = document.getElementById("somAcerto");
+const erro = document.getElementById("somErro");
+
+/* JOGO 1 */
+const letras = document.querySelectorAll(".letras span");
+const drop = document.getElementById("dropzone");
+let formed = "";
+
+letras.forEach(l => {
+    l.addEventListener("dragstart", e => {
+        e.dataTransfer.setData("text", e.target.innerText);
+    });
+});
+
+drop.addEventListener("dragover", e => e.preventDefault());
+
+drop.addEventListener("drop", e => {
+    const letra = e.dataTransfer.getData("text");
+    formed += letra;
+    drop.innerHTML = formed;
+
+    if(formed === "GATO"){
+        acerto.play();
+        msg1.innerText = "Parabéns! 🎉";
+    }
+});
+
+/* JOGO 2 */
+function silaba(s){
+    if(s === "CA"){
+        acerto.play();
+        msg2.innerText = "Acertou! 🎉";
+    } else {
+        erro.play();
+        msg2.innerText = "Tente novamente!";
+    }
+}
+
+/* JOGO 3 */
+function vogal(v){
+    if(v === "A"){
+        acerto.play();
+        msg3.innerText = "Muito bem! A palavra é CASA!";
+    } else {
+        erro.play();
+        msg3.innerText = "Não é essa vogal!";
+    }
+}
+
+/* JOGO 4 */
+function figura(nome){
+    if(nome === "gato"){
+        acerto.play();
+        msg4.innerText = "Isso mesmo! É o gato! 😺";
+    } else {
+        erro.play();
+        msg4.innerText = "Tente de novo!";
+    }
+}
+
+/* JOGO 5 */
+function letrainicial(l){
+    if(l === "A"){
+        acerto.play();
+        msg5.innerText = "Acertou! ABACAXI começa com A!";
+    } else {
+        erro.play();
+        msg5.innerText = "Não é essa letra!";
+    }
+}
+</script>
+
+</body>
+</html>

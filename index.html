@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>DiversaMente - Informações sobre o Autismo</title>
+<style>
+body{
+    margin:0;
+    font-family:'Segoe UI', Arial, sans-serif;
+    background:#eef3f8;
+    background-image:url("https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Autism_Awareness_Puzzle_Piece.png/480px-Autism_Awareness_Puzzle_Piece.png");
+    background-repeat:no-repeat;
+    background-size:500px;
+    background-position:center;
+    background-attachment:fixed;
+    opacity: 0.98;
+}
+
+header{
+    background:#2b70c9;
+    padding:25px;
+    color:white;
+    text-align:center;
+    box-shadow:0 3px 8px rgba(0,0,0,0.25);
+}
+
+header h1{
+    margin:0;
+    font-size:40px;
+    font-weight:700;
+}
+
+nav a{
+    color:white;
+    margin:0 15px;
+    font-size:18px;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 2px 12px rgba(0,0,0,0.15);
+    margin-bottom:25px;
+}
+
+.card h2{
+    color:#2b70c9;
+    margin-top:0;
+    font-size:28px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+img.ilustra1{
+    width:75%;
+    border-radius:12px;
+    box-shadow:0 2px 12px rgba(0,0,0,0.2);
+}
+
+img.ilustra2{
+    width:35%;
+    border-radius:12px;
+    box-shadow:0 2px 12px rgba(0,0,0,0.2);
+    align-items: center;
+}
+
+.button{
+    display:inline-block;
+    background:#2b70c9;
+    padding:15px 24px;
+    text-decoration:none;
+    color:white;
+    font-size:20px;
+    border-radius:12px;
+    font-weight:600;
+    box-shadow:0 3px 10px rgba(0,0,0,0.25);
+    transition:0.2s;
+}
+.button:hover{
+    background:#184a82;
+}
+
+footer{
+    text-align:center;
+    padding:15px;
+    margin-top:20px;
+    background:#d3d9e2;
+    color:#444;
+    font-size:14px;
+    border-top:2px solid #b4bac4;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>DiversaMente</h1>
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="jogos.html">Jogos</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <!-- SOBRE O AUTISMO -->
+    <div class="card">
+        <h2>O que é o Transtorno do Espectro Autista (TEA)</h2>
+        <p>
+            O Transtorno do Espectro Autista (TEA) é uma condição do neurodesenvolvimento que afeta a 
+            comunicação, o comportamento, as interações sociais e a forma como a pessoa percebe o mundo.
+            O termo “espectro” significa que o autismo apresenta diferentes níveis, características e intensidades.
+        </p>
+    </div>
+
+    <!-- IMAGEM + TEXTO -->
+    <div class="card">
+        <div class="grid">
+            <img src="./img/autismo-scaled.jpg" class= "ilustra1">
+
+            <div>
+                <h2>Principais características</h2>
+                <ul>
+                    <li>Dificuldade na comunicação verbal e não verbal</li>
+                    <li>Dificuldade na interação social</li>
+                    <li>Interesses específicos e aprofundados</li>
+                    <li>Sensibilidade a sons, luzes, cheiros e texturas</li>
+                    <li>Rotinas rígidas</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- NIVEIS -->
+    <div class="card">
+        <h2>Níveis do Espectro Autista</h2>
+
+        <h3>🔵 Nível 1 – Leve (Precisa de pouco suporte)</h3>
+        <p>
+            A pessoa consegue se comunicar, mas pode ter dificuldades sociais e de organização. Geralmente precisa de 
+            algum suporte em ambientes com muita informação.
+        </p>
+
+        <h3>🔵 Nível 2 – Moderado (Suporte substancial)</h3>
+        <p>
+            Há dificuldades mais acentuadas na comunicação, interação social e flexibilidade. Necessita de um suporte 
+            mais frequente no dia a dia.
+        </p>
+
+        <h3>🔵 Nível 3 – Severo (Suporte muito substancial)</h3>
+        <p>
+            A comunicação é muito limitada e há grande necessidade de apoio constante. A pessoa pode apresentar 
+            comportamentos repetitivos intensos e alta sensibilidade sensorial.
+        </p>
+    </div>
+
+    <!-- IMAGEM -->
+    <div class="card">
+        <h2>Autismo é uma forma única de ser</h2>
+        <img src="./img/depositphotos_57709003-stock-photo-autism-awareness-symbol-puzzle-with.jpg" class="ilustra2">
+        <p>
+            Pessoas autistas não precisam ser “consertadas”. Elas precisam ser compreendidas, respeitadas e ter seu 
+            jeito único valorizado.
+        </p>
+    </div>
+
+    <!-- BOTÃO JOGOS -->
+    <div class="card" style="text-align:center;">
+        <h2>Aprender brincando</h2>
+        <p>Clique para ir para a seção de jogos educativos:</p>
+        <a href="jogos.html" class="button">Teamente Ensina</a>
+    </div>
+
+</div>
+
+<footer>
+    Desenvolvido por Teamente — Inclusão, Amor e Conhecimento
+</footer>
+
+</body>
+</html>
